@@ -1,0 +1,7 @@
+spark\_manager module
+=====================
+
+.. automodule:: spark_manager
+   :members:
+   :undoc-members:
+   :show-inheritance:

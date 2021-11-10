@@ -1,0 +1,7 @@
+kafka\_consumer module
+======================
+
+.. automodule:: kafka_consumer
+   :members:
+   :undoc-members:
+   :show-inheritance:

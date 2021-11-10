@@ -1,0 +1,380 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>app &mdash; Fraudsicern 1.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fraudsicern
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../interface/modules.html">interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/modules.html">app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/modules.html">utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/modules.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classifier/modules.html">classifier</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fraudsicern</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>app</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for app</h1><div class="highlight"><pre>
+<span></span><span class="c1"># !/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">@author: Wang Zhiyi</span>
+<span class="sd">@file: app.py</span>
+<span class="sd">@time: 7/6/2021</span>
+<span class="sd">@version:</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">_init_load_data</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Load data when into back end buffer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">_data_set</span><span class="p">,</span> <span class="n">_data_set_description</span><span class="p">,</span> <span class="n">_is_finished</span><span class="p">,</span> <span class="n">_hdfs_config</span>
+    <span class="k">if</span> <span class="n">_is_finished</span><span class="p">[</span><span class="s2">&quot;describe_data_set&quot;</span><span class="p">]:</span>
+        <span class="c1"># If the data description has been generated and it is not changed, return it directly.</span>
+        <span class="k">return</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">source_path</span> <span class="o">=</span> <span class="n">_hdfs_config</span><span class="p">[</span><span class="s2">&quot;hdfs_base&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">_hdfs_config</span><span class="p">[</span><span class="s2">&quot;hdfs_root&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">_hdfs_config</span><span class="p">[</span><span class="s2">&quot;hdfs_folder_name&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> \
+            <span class="n">_hdfs_config</span><span class="p">[</span>
+            <span class="s2">&quot;hdfs_data_set_name&quot;</span><span class="p">]</span>
+        <span class="n">_data_set</span> <span class="o">=</span> <span class="n">data_loader</span><span class="o">.</span><span class="n">load_data_from_hdfs</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">source_path</span><span class="p">)</span>
+        <span class="n">_data_set</span> <span class="o">=</span> <span class="n">_data_set</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s2">&quot;amt&quot;</span><span class="p">,</span> <span class="s2">&quot;lat&quot;</span><span class="p">,</span> <span class="s2">&quot;long&quot;</span><span class="p">,</span> <span class="s2">&quot;city_pop&quot;</span><span class="p">,</span> <span class="s2">&quot;merch_lat&quot;</span><span class="p">,</span> <span class="s2">&quot;merch_long&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;is_fraud&quot;</span><span class="p">])</span>
+        <span class="n">_data_set_description</span> <span class="o">=</span> <span class="n">_data_set</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+        <span class="n">_data_set_description</span> <span class="o">=</span> <span class="n">_data_set_description</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+        <span class="c1"># data_set_description = data_set_description.to_html()</span>
+        <span class="c1"># data_set_description = str(data_set_description)</span>
+        <span class="n">_is_finished</span><span class="p">[</span><span class="s2">&quot;describe_data_set&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span>
+
+
+<span class="k">def</span> <span class="nf">_init_preprocess</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Preprocess the data, including smote.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">_data_set</span><span class="p">,</span> <span class="n">_data_ratio</span><span class="p">,</span> <span class="n">_is_finished</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_is_finished</span><span class="p">[</span><span class="s2">&quot;load_data_set&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">_is_finished</span><span class="p">[</span><span class="s2">&quot;describe_data_set&quot;</span><span class="p">]:</span>
+        <span class="n">_init_load_data</span><span class="p">()</span>
+        <span class="n">_init_preprocess</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data_set_before</span> <span class="o">=</span> <span class="n">data_sampler</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span>
+            <span class="n">data_set</span><span class="o">=</span><span class="n">_data_set</span><span class="p">,</span> <span class="n">target_name</span><span class="o">=</span><span class="s1">&#39;is_fraud&#39;</span><span class="p">)</span>
+        <span class="n">_data_ratio</span><span class="p">[</span><span class="s2">&quot;before_smote&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_set_before</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+            <span class="s1">&#39;label&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+        <span class="n">data_set</span> <span class="o">=</span> <span class="n">data_sampler</span><span class="o">.</span><span class="n">smote</span><span class="p">(</span><span class="n">_data_set</span><span class="p">)</span>
+        <span class="n">_data_ratio</span><span class="p">[</span><span class="s2">&quot;after_smote&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_set</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+            <span class="s1">&#39;label&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+        <span class="n">_is_finished</span><span class="p">[</span><span class="s2">&quot;preprocess_data_set&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span>
+
+
+<div class="viewcode-block" id="welcome"><a class="viewcode-back" href="../app/app.html#app.welcome">[docs]</a><span class="k">def</span> <span class="nf">welcome</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;The API for home page</span>
+<span class="sd">    @app.route(&#39;/&#39;, methods=[&quot;GET&quot;, &quot;POST&quot;])</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        [type]: [description]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">_hdfs_config</span>
+    <span class="n">user_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;user_name&quot;</span><span class="p">)</span>
+    <span class="n">user_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">user_name</span> <span class="ow">and</span> <span class="n">user_id</span><span class="p">:</span>
+        <span class="n">_hdfs_config</span><span class="p">[</span><span class="s2">&quot;hdfs_folder_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;user_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">))</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">hdfs_manager</span><span class="o">.</span><span class="n">create_dir</span><span class="p">(</span>
+            <span class="n">hdfs_root</span><span class="o">=</span><span class="n">_hdfs_config</span><span class="p">[</span><span class="s2">&quot;hdfs_root&quot;</span><span class="p">],</span> <span class="n">folder_name</span><span class="o">=</span><span class="n">_hdfs_config</span><span class="p">[</span><span class="s2">&quot;hdfs_folder_name&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        &lt;!DOCTYPE html&gt;</span>
+<span class="s1">        &lt;h1&gt;Welcome to fraudiscern! Your user name is </span><span class="si">{}</span><span class="s1">, your user_id is </span><span class="si">{}</span><span class="s1">, you have created an hdfs folder: </span><span class="si">{}</span><span class="s1">&lt;/h1&gt;</span>
+<span class="s1">        &lt;h2&gt;Congratulations, </span><span class="si">{}</span><span class="s1">&lt;/h2&gt;</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user_name</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">_hdfs_config</span><span class="p">[</span><span class="s2">&quot;hdfs_folder_name&quot;</span><span class="p">],</span> <span class="n">res</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        &lt;!DOCTYPE html&gt;</span>
+<span class="s1">        &lt;h1&gt;Welcome to fraudiscern!&lt;/h1&gt;</span>
+<span class="s1">        &lt;h2&gt;Enjoy it~&lt;/h2&gt;</span>
+<span class="s1">        &#39;&#39;&#39;</span></div>
+
+<div class="viewcode-block" id="upload"><a class="viewcode-back" href="../app/app.html#app.upload">[docs]</a><span class="k">def</span> <span class="nf">upload</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;The API for data upload page.</span>
+<span class="sd">    @app.route(&#39;/upload&#39;, methods=[&quot;GET&quot;, &quot;POST&quot;])</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: data statue.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">_hdfs_config</span><span class="p">,</span> <span class="n">_hdfs_client</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">file_object</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">file_object</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="p">)</span>
+
+            <span class="n">file_name</span> <span class="o">=</span> <span class="n">secure_filename</span><span class="p">(</span><span class="n">file_object</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+            <span class="n">_hdfs_config</span><span class="p">[</span><span class="s2">&quot;hdfs_data_set_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">file_name</span>
+
+            <span class="c1"># Upload file to server buffer.</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;UPLOAD_FOLDER&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">):</span>
+                <span class="n">file_object</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;UPLOAD_FOLDER&#39;</span><span class="p">],</span> <span class="n">file_name</span><span class="p">))</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="c1"># Compose hdfs_address.</span>
+            <span class="n">hdfs_path_to_folder</span> <span class="o">=</span> <span class="n">_hdfs_config</span><span class="p">[</span><span class="s2">&quot;hdfs_root&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">_hdfs_config</span><span class="p">[</span>
+                <span class="s2">&quot;hdfs_folder_name&quot;</span><span class="p">]</span>
+            <span class="c1"># 从服务器缓冲区上传到hdfs, 子线程上传, 目前在flask中执行shell脚本的功能还无法较好的实现</span>
+            <span class="c1"># Upload to hdfs</span>
+            <span class="c1"># import cmd_helper</span>
+            <span class="c1"># cmd_helper.cmd_helper(&quot;hadoop fs -put {} {}&quot;.format(app.config[&#39;UPLOAD_FOLDER&#39;] + file_name,</span>
+            <span class="c1">#                                                     hdfs_path_to_folder + &#39;/&#39; + file_name))</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">_hdfs_client</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><span class="n">hdfs_path_to_folder</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;UPLOAD_FOLDER&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span>
+                                    <span class="n">n_threads</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">hdfs</span><span class="o">.</span><span class="n">HdfsError</span><span class="p">:</span>
+                <span class="n">_is_finished</span><span class="p">[</span><span class="s2">&quot;load_data_set&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">return</span> <span class="s2">&quot;File </span><span class="si">{}</span><span class="s2"> already exists!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hdfs_path_to_folder</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">)</span>
+                <span class="k">pass</span>
+            <span class="c1"># _hdfs_client.upload(&quot;/dataset/user_12345/analyzer.py&quot;, app.config[&#39;UPLOAD_FOLDER&#39;] + file_name)</span>
+            <span class="n">_is_finished</span><span class="p">[</span><span class="s2">&quot;load_data_set&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">return</span> <span class="n">html</span> <span class="o">+</span> <span class="s2">&quot;Upload finished!&quot;</span> <span class="o">+</span> <span class="s2">&quot;hadoop fs -put </span><span class="si">{}</span><span class="s2">  </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;UPLOAD_FOLDER&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span>
+                                                                              <span class="n">hdfs_path_to_folder</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Cannot upload empty file.&quot;</span>
+    <span class="c1"># Make buffer dictionary.</span>
+    <span class="c1"># 尚未解决如何让flask执行shell脚本，</span>
+    <span class="c1"># import cmd_helper</span>
+    <span class="c1"># cmd_helper.cmd_helper(&quot;mkdir {}&quot;.format(app.config[&#39;UPLOAD_FOLDER&#39;]))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;UPLOAD_FOLDER&#39;</span><span class="p">]):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;UPLOAD_FOLDER&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">html</span> <span class="o">+</span> <span class="s2">&quot;File will be uploaded to:&quot;</span> <span class="o">+</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;UPLOAD_FOLDER&#39;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="visualization"><a class="viewcode-back" href="../app/app.html#app.visualization">[docs]</a><span class="k">def</span> <span class="nf">visualization</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;The API for data visualization.</span>
+<span class="sd">    @app.route(&#39;/visualization&#39;, methods=[&quot;GET&quot;, &quot;POST&quot;])</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        json str: Data description info.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">_data_set_description</span>
+    <span class="n">_init_load_data</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">_data_set_description</span><span class="o">.</span><span class="n">to_json</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="preprocess"><a class="viewcode-back" href="../app/app.html#app.preprocess">[docs]</a><span class="k">def</span> <span class="nf">preprocess</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;API for preprocess</span>
+<span class="sd">    @app.route(&#39;/preprocess&#39;, methods=[&quot;GET&quot;, &quot;POST&quot;])</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        json str: Data preprocess info.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">_data_ratio</span>
+    <span class="n">_init_preprocess</span><span class="p">()</span>
+    <span class="n">res_ratio</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;before_smote&quot;</span><span class="p">:</span> <span class="n">_data_ratio</span><span class="p">[</span><span class="s2">&quot;before_smote&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_json</span><span class="p">(),</span>
+                 <span class="s2">&quot;after_smote&quot;</span><span class="p">:</span> <span class="n">_data_ratio</span><span class="p">[</span><span class="s2">&quot;after_smote&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_json</span><span class="p">()}</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">res_ratio</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="train_model"><a class="viewcode-back" href="../app/app.html#app.train_model">[docs]</a><span class="k">def</span> <span class="nf">train_model</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Model training API</span>
+<span class="sd">    @app.route(&#39;/train-model&#39;, methods=[&#39;GET&#39;, &#39;POST&#39;])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">_classifier_instance</span><span class="p">,</span> <span class="n">_hdfs_config</span>
+    <span class="n">model_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;model_name&quot;</span><span class="p">)</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;target&quot;</span><span class="p">)</span>
+    <span class="n">_train_ratio</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;train_ratio&quot;</span><span class="p">))</span>
+    <span class="n">classifier_instance</span> <span class="o">=</span> <span class="n">classifier</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
+    <span class="n">data_set_path</span> <span class="o">=</span> <span class="n">_hdfs_config</span><span class="p">[</span><span class="s2">&quot;hdfs_base&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">_hdfs_config</span><span class="p">[</span><span class="s2">&quot;hdfs_root&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">_hdfs_config</span><span class="p">[</span><span class="s2">&quot;hdfs_folder_name&quot;</span><span class="p">]</span> <span class="o">+</span> \
+        <span class="n">_hdfs_config</span><span class="p">[</span><span class="s2">&quot;hdfs_data_set_name&quot;</span><span class="p">]</span>
+    <span class="n">classifier_instance</span><span class="o">.</span><span class="n">set_data_set</span><span class="p">(</span><span class="n">data_set_path</span><span class="o">=</span><span class="n">data_set_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../app/app.html#app.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Entry to backend.</span>
+<span class="sd">    To start up just run this function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Wang Zhiyi, Zhang Siyu, Su Junjie.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

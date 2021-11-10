@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>random_forest_classifier module &mdash; Fraudsicern 1.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="classifier" href="../classifier/modules.html" />
+    <link rel="prev" title="models" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fraudsicern
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../interface/modules.html">interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/modules.html">app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/modules.html">utils</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">models</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">random_forest_classifier module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../classifier/modules.html">classifier</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fraudsicern</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">models</a> &raquo;</li>
+        
+      <li>random_forest_classifier module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/models/random_forest_classifier.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-random_forest_classifier">
+<span id="random-forest-classifier-module"></span><h1>random_forest_classifier module<a class="headerlink" href="#module-random_forest_classifier" title="Permalink to this headline">¶</a></h1>
+<p>&#64;author: Zhang Siyu, Wang Zhiyi
+&#64;file: random_forest_classifier.py
+&#64;time: 6/28/2021
+&#64;version: 1.1</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="random_forest_classifier.fit">
+<span class="sig-prename descclassname"><span class="pre">random_forest_classifier.</span></span><span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_set</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/random_forest_classifier.html#fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#random_forest_classifier.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train the model
+:param train_set: The train set.
+:type train_set: pyspark.sql.DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The random forest classifier object.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pyspark.ml.classification.RandomForestClassifier</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="random_forest_classifier.load_model">
+<span class="sig-prename descclassname"><span class="pre">random_forest_classifier.</span></span><span class="sig-name descname"><span class="pre">load_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/random_forest_classifier.html#load_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#random_forest_classifier.load_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the trained model from a pickle file.
+:param path: The source path to load the model, an hdfs path could be convenient.
+:type path: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>NoneType</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="random_forest_classifier.optional_property">
+<span class="sig-prename descclassname"><span class="pre">random_forest_classifier.</span></span><span class="sig-name descname"><span class="pre">optional_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/random_forest_classifier.html#optional_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#random_forest_classifier.optional_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>An optional property implementation, no features has been added.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="random_forest_classifier.predict">
+<span class="sig-prename descclassname"><span class="pre">random_forest_classifier.</span></span><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_set</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/random_forest_classifier.html#predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#random_forest_classifier.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use the existing model to predict on a feature data set.
+:param test_set: The features will be predicted.
+:type test_set: pyspark.sql.DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The predict result.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pyspark.sql.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="random_forest_classifier.save_model">
+<span class="sig-prename descclassname"><span class="pre">random_forest_classifier.</span></span><span class="sig-name descname"><span class="pre">save_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/random_forest_classifier.html#save_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#random_forest_classifier.save_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the trained model into a pickle file.
+:param path: The target path to save the model, an hdfs path could be convenient.
+:type path: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>NoneType</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="random_forest_classifier.validate_model">
+<span class="sig-prename descclassname"><span class="pre">random_forest_classifier.</span></span><span class="sig-name descname"><span class="pre">validate_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'accuracy'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/random_forest_classifier.html#validate_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#random_forest_classifier.validate_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate the model in some indexes: [‘accuracy’, ‘auc’]
+:param method: The validation option. Defaults to ‘accuracy’.
+:type method: str, optional</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The predict result, could be a value, dictionary etc.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>multi type</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../classifier/modules.html" class="btn btn-neutral float-right" title="classifier" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="modules.html" class="btn btn-neutral float-left" title="models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Wang Zhiyi, Zhang Siyu, Su Junjie.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

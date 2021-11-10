@@ -1,0 +1,19 @@
+utils
+=====
+
+.. toctree::
+   :maxdepth: 4
+
+   cmd_helper
+   data_generator
+   data_loader
+   data_sampler
+   fraud_detector
+   hdfs_manager
+   kafka_consumer
+   logger
+   model_persistence
+   spark_manager
+   stress_test_consumer
+   stress_test_producer
+   unit_test

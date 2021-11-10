@@ -1,0 +1,7 @@
+random\_forest\_classifier module
+=================================
+
+.. automodule:: random_forest_classifier
+   :members:
+   :undoc-members:
+   :show-inheritance:

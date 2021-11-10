@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>unit_test &mdash; Fraudsicern 1.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fraudsicern
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../interface/modules.html">interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/modules.html">app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/modules.html">utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/modules.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classifier/modules.html">classifier</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fraudsicern</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>unit_test</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for unit_test</h1><div class="highlight"><pre>
+<span></span><span class="c1"># !/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">@author: Wang Zhiyi</span>
+<span class="sd">@file: unit_test.py</span>
+<span class="sd">@time: 7/4/2021</span>
+<span class="sd">@version:</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="spark_manager_test"><a class="viewcode-back" href="../utils/unit_test.html#unit_test.spark_manager_test">[docs]</a><span class="k">def</span> <span class="nf">spark_manager_test</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Unit Test module for spark mamager module.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">spark_session</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Start spark_manager unit test.&quot;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Try to import spark_manager.&quot;</span><span class="p">)</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;spark-submit --master yarn spark_manager.py&quot;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;File to import &#39;spark_manager&#39;.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">spark_session</span><span class="p">):</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Unit test for spark_manager.get_spark_session() is pass.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="hdfs_manager_test"><a class="viewcode-back" href="../utils/unit_test.html#unit_test.hdfs_manager_test">[docs]</a><span class="k">def</span> <span class="nf">hdfs_manager_test</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Unit Test module for hdfs module.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">hdfs_client</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Start hdfs_manager unit test.&quot;</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">hdfs_manager</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">hdfs_client</span> <span class="o">=</span> <span class="n">hdfs_manager</span><span class="o">.</span><span class="n">get_hdfs_client</span><span class="p">()</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Try to import hdfs_manager.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;File to import &#39;hdfs_manager&#39;.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">hdfs_client</span><span class="p">):</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Unit test for hdfs_manager_test.get_hdfs_client() is pass.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="data_loader_test"><a class="viewcode-back" href="../utils/unit_test.html#unit_test.data_loader_test">[docs]</a><span class="k">def</span> <span class="nf">data_loader_test</span><span class="p">(</span><span class="n">function</span><span class="o">=</span><span class="s1">&#39;load_data_from_hdfs&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Unit Test module for data loader module.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Start data_loader_test unit test.&quot;</span><span class="p">)</span>
+    <span class="n">data_set</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="kn">import</span> <span class="nn">data_loader</span>
+    <span class="k">if</span> <span class="n">function</span> <span class="o">==</span> <span class="s1">&#39;load_data_from_hdfs&#39;</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">source_path</span> <span class="o">=</span> <span class="s2">&quot;hdfs://10.244.35.208:9000/dataset/dataset_1/fraudTest.csv&quot;</span>
+            <span class="n">data_set</span> <span class="o">=</span> <span class="n">data_loader</span><span class="o">.</span><span class="n">load_data_from_hdfs</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">source_path</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Unit test for data_loader.</span><span class="si">{}</span><span class="s2"> is NOT pass.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">function</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">data_set</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">data_set</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Unit test for data_loader.</span><span class="si">{}</span><span class="s2"> hdfs is pass.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">function</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">function</span> <span class="o">==</span> <span class="s1">&#39;load_data_to_csv&#39;</span><span class="p">:</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">source_path</span> <span class="o">=</span> <span class="s2">&quot;hdfs://10.244.35.208:9000/dataset/dataset_1/fraudTest.csv&quot;</span>
+            <span class="n">target_path</span> <span class="o">=</span> <span class="s2">&quot;hdfs://10.244.35.208:9000/dataset/dataset_1/fraud_test.csv&quot;</span>
+            <span class="n">data_set</span> <span class="o">=</span> <span class="n">data_loader</span><span class="o">.</span><span class="n">load_data_from_hdfs</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">source_path</span><span class="p">)</span>
+            <span class="n">data_loader</span><span class="o">.</span><span class="n">load_data_to_csv</span><span class="p">(</span><span class="n">data_set</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
+            <span class="n">data_set</span> <span class="o">=</span> <span class="n">data_loader</span><span class="o">.</span><span class="n">load_data_from_hdfs</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Unit test for data_loader.</span><span class="si">{}</span><span class="s2"> is NOT pass.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">function</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">data_set</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">data_set</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="model_persistence_test"><a class="viewcode-back" href="../utils/unit_test.html#unit_test.model_persistence_test">[docs]</a><span class="k">def</span> <span class="nf">model_persistence_test</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Unit Test module for model persistence module.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_model_object</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1"># try:</span>
+    <span class="kn">import</span> <span class="nn">model_persistence</span>
+    <span class="n">model_path</span> <span class="o">=</span> <span class="s2">&quot;hdfs://10.244.35.208:9000/models/RandomForestModel/random_forest_1&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=================================&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Start Model Persistence Test.&quot;</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">model_persistence</span><span class="o">.</span><span class="n">load_model_from_file</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="data_sampler_test"><a class="viewcode-back" href="../utils/unit_test.html#unit_test.data_sampler_test">[docs]</a><span class="k">def</span> <span class="nf">data_sampler_test</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Unit Test module for model data sampler module.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">data_loader</span>
+    <span class="kn">import</span> <span class="nn">data_sampler</span>
+    <span class="n">new_data_set</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">ratio_before</span><span class="p">,</span> <span class="n">ratio_after</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data_set</span> <span class="o">=</span> <span class="n">data_loader</span><span class="o">.</span><span class="n">load_data_from_hdfs</span><span class="p">(</span><span class="s2">&quot;hdfs://10.244.35.208:9000/dataset/dataset_1/fraudTest.csv&quot;</span><span class="p">)</span>
+        <span class="n">ratio_before</span> <span class="o">=</span> <span class="n">data_set</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;is_fraud&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+
+        <span class="n">new_data_set</span> <span class="o">=</span> <span class="n">data_sampler</span><span class="o">.</span><span class="n">smote</span><span class="p">(</span><span class="n">data_set</span><span class="o">=</span><span class="n">data_set</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;is_fraud&#39;</span><span class="p">)</span>
+        <span class="n">ratio_after</span> <span class="o">=</span> <span class="n">new_data_set</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Unit for data_sampler_test is NOT pass.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ratio_before</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ratio_after</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">new_data_set</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Unit test for data_sampler is pass.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">ratio_before</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">ratio_after</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">new_data_set</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">new_data_set</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Unit test for data_sample is not pass for known reason.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="classifier_test"><a class="viewcode-back" href="../utils/unit_test.html#unit_test.classifier_test">[docs]</a><span class="k">def</span> <span class="nf">classifier_test</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Unit Test module for classifier module.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">source.classifier</span> <span class="kn">import</span> <span class="n">classifier</span>
+
+    <span class="n">classifier_instance</span> <span class="o">=</span> <span class="n">classifier</span><span class="p">()</span>
+    <span class="n">classifier_instance</span><span class="o">.</span><span class="n">set_data_set</span><span class="p">(</span><span class="s2">&quot;hdfs://10.244.35.208:9000/dataset/dataset_1/fraudTest.csv&quot;</span><span class="p">)</span>
+
+    <span class="n">classifier_instance</span><span class="o">.</span><span class="n">train_model</span><span class="p">()</span>
+    <span class="n">classifier_instance</span><span class="o">.</span><span class="n">save_model</span><span class="p">()</span>
+    <span class="n">classifier_instance</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
+    <span class="c1"># validation module test</span>
+    <span class="n">classifier_instance</span><span class="o">.</span><span class="n">validate_model</span><span class="p">(</span><span class="n">validate_method</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
+    <span class="n">classifier_instance</span><span class="o">.</span><span class="n">validate_model</span><span class="p">(</span><span class="n">validate_method</span><span class="o">=</span><span class="s1">&#39;auc&#39;</span><span class="p">)</span>
+    <span class="n">classifier_instance</span><span class="o">.</span><span class="n">validate_model</span><span class="p">(</span><span class="n">validate_method</span><span class="o">=</span><span class="s1">&#39;precision&#39;</span><span class="p">)</span>
+    <span class="n">classifier_instance</span><span class="o">.</span><span class="n">validate_model</span><span class="p">(</span><span class="n">validate_method</span><span class="o">=</span><span class="s1">&#39;recall&#39;</span><span class="p">)</span>
+    <span class="n">classifier_instance</span><span class="o">.</span><span class="n">detect_fraud</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="generator_test"><a class="viewcode-back" href="../utils/unit_test.html#unit_test.generator_test">[docs]</a><span class="k">def</span> <span class="nf">generator_test</span><span class="p">(</span><span class="n">function_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Unit Test module for data generator module.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">function_name</span> <span class="o">==</span> <span class="s2">&quot;gen_customer&quot;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">data_generator</span> <span class="kn">import</span> <span class="n">generate_customer_data</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Module: data_generator.generate_customer_data is imported successfully.&quot;</span><span class="p">)</span>
+            <span class="n">customer_set</span> <span class="o">=</span> <span class="n">generate_customer_data</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">customer_set</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">function_name</span> <span class="o">==</span> <span class="s2">&quot;gen_transaction&quot;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">data_generator</span> <span class="kn">import</span> <span class="n">generate_transaction_data</span>
+            <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Module: data_generator.generate_transaction_data is imported successfully.&quot;</span><span class="p">)</span>
+            <span class="n">transaction_set</span> <span class="o">=</span> <span class="n">generate_transaction_data</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">transaction_set</span><span class="p">[</span><span class="s1">&#39;last&#39;</span><span class="p">])</span>
+            <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">transaction_set</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">transaction_set</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;is_fraud&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Unit for generator_test.</span><span class="si">{}</span><span class="s2"> is NOT pass.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">function_name</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="main_test"><a class="viewcode-back" href="../utils/unit_test.html#unit_test.main_test">[docs]</a><span class="k">def</span> <span class="nf">main_test</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Entry to Unit test.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">spark_manager_test</span><span class="p">()</span>
+    <span class="n">generator_test</span><span class="p">(</span><span class="s2">&quot;gen_transaction&quot;</span><span class="p">)</span>
+    <span class="n">classifier_test</span><span class="p">()</span>
+    <span class="n">model_persistence_test</span><span class="p">()</span>
+    <span class="n">data_sampler_test</span><span class="p">()</span>
+    <span class="n">data_loader_test</span><span class="p">(</span><span class="n">function</span><span class="o">=</span><span class="s1">&#39;load_data_to_csv&#39;</span><span class="p">)</span>
+    <span class="n">data_loader_test</span><span class="p">(</span><span class="n">function</span><span class="o">=</span><span class="s1">&#39;load_data_from_hdfs&#39;</span><span class="p">)</span>
+
+    <span class="n">hdfs_manager_test</span><span class="p">()</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Wang Zhiyi, Zhang Siyu, Su Junjie.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+model\_persistence module
+=========================
+
+.. automodule:: model_persistence
+   :members:
+   :undoc-members:
+   :show-inheritance:

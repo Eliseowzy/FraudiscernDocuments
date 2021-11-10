@@ -1,0 +1,7 @@
+stress\_test\_consumer module
+=============================
+
+.. automodule:: stress_test_consumer
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>random_forest_classifier &mdash; Fraudsicern 1.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fraudsicern
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../interface/modules.html">interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/modules.html">app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/modules.html">utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/modules.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classifier/modules.html">classifier</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fraudsicern</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>random_forest_classifier</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for random_forest_classifier</h1><div class="highlight"><pre>
+<span></span><span class="c1"># !/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">@author: Zhang Siyu, Wang Zhiyi</span>
+<span class="sd">@file: random_forest_classifier.py</span>
+<span class="sd">@time: 6/28/2021</span>
+<span class="sd">@version: 1.1</span>
+<span class="sd">&quot;&quot;&quot;</span>
+ 
+
+<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">impurity</span><span class="o">=</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="n">trees_count</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">2021</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Implement model interface as random forest classifier model. The functions below, implement the interface definition.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        model_interface (ABCMeta): The definition of interface, meta class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_model_object</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span>
+        <span class="n">impurity</span><span class="o">=</span><span class="n">impurity</span><span class="p">,</span> <span class="n">numTrees</span><span class="o">=</span><span class="n">trees_count</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_predict_result</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_feature_importance</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_object</span><span class="p">)</span>
+<div class="viewcode-block" id="fit"><a class="viewcode-back" href="../models/random_forest_classifier.html#random_forest_classifier.fit">[docs]</a><span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">train_set</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Train the model</span>
+<span class="sd">    Args:</span>
+<span class="sd">        train_set (pyspark.sql.DataFrame): The train set.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        pyspark.ml.classification.RandomForestClassifier: The random forest classifier object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">train_set</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">feature_assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">()</span><span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span>
+        <span class="n">features</span><span class="p">)</span><span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s1">&#39;features&#39;</span><span class="p">)</span>
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">feature_assembler</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_object</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_model_object</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_set</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_feature_importance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_object</span><span class="o">.</span><span class="n">featureImportances</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_object</span></div>
+<div class="viewcode-block" id="predict"><a class="viewcode-back" href="../models/random_forest_classifier.html#random_forest_classifier.predict">[docs]</a><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_set</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Use the existing model to predict on a feature data set.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        test_set (pyspark.sql.DataFrame): The features will be predicted.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        pyspark.sql.DataFrame: The predict result.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_predict_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_object</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_result</span></div>
+<div class="viewcode-block" id="validate_model"><a class="viewcode-back" href="../models/random_forest_classifier.html#random_forest_classifier.validate_model">[docs]</a><span class="k">def</span> <span class="nf">validate_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Validate the model in some indexes: [&#39;accuracy&#39;, &#39;auc&#39;]</span>
+<span class="sd">    Args:</span>
+<span class="sd">        method (str, optional): The validation option. Defaults to &#39;accuracy&#39;.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        multi type: The predict result, could be a value, dictionary etc.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">:</span>
+        <span class="n">evaluator</span> <span class="o">=</span> <span class="n">MulticlassClassificationEvaluator</span><span class="o">.</span><span class="n">setMetricName</span><span class="p">(</span>
+            <span class="s2">&quot;accuracy&quot;</span><span class="p">)</span>
+        <span class="n">acc</span> <span class="o">=</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_object</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">acc</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;auc&#39;</span><span class="p">:</span>
+        <span class="n">evaluator</span> <span class="o">=</span> <span class="n">BinaryClassificationEvaluator</span><span class="p">()</span><span class="o">.</span><span class="n">setMetricName</span><span class="p">(</span><span class="s2">&quot;areaUnderROC&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setRawPredictionCol</span><span class="p">(</span>
+            <span class="s1">&#39;rawPrediction&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">setLabelCol</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span>
+        <span class="n">auc</span> <span class="o">=</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_predict_result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">auc</span></div>
+<div class="viewcode-block" id="save_model"><a class="viewcode-back" href="../models/random_forest_classifier.html#random_forest_classifier.save_model">[docs]</a><span class="k">def</span> <span class="nf">save_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Save the trained model into a pickle file.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): The target path to save the model, an hdfs path could be convenient.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        NoneType: None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">model_persistence</span><span class="o">.</span><span class="n">load_model_to_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_object</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+<div class="viewcode-block" id="load_model"><a class="viewcode-back" href="../models/random_forest_classifier.html#random_forest_classifier.load_model">[docs]</a><span class="k">def</span> <span class="nf">load_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Save the trained model from a pickle file.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        path (str): The source path to load the model, an hdfs path could be convenient.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        NoneType: None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_model_object</span> <span class="o">=</span> <span class="n">model_persistence</span><span class="o">.</span><span class="n">load_model_from_file</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+<div class="viewcode-block" id="optional_property"><a class="viewcode-back" href="../models/random_forest_classifier.html#random_forest_classifier.optional_property">[docs]</a><span class="k">def</span> <span class="nf">optional_property</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;An optional property implementation, no features has been added.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You can write some other unique functions here&quot;</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Wang Zhiyi, Zhang Siyu, Su Junjie.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

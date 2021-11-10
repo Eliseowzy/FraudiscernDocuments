@@ -1,0 +1,7 @@
+stress\_test\_producer module
+=============================
+
+.. automodule:: stress_test_producer
+   :members:
+   :undoc-members:
+   :show-inheritance:

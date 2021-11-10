@@ -1,0 +1,7 @@
+hdfs\_manager module
+====================
+
+.. automodule:: hdfs_manager
+   :members:
+   :undoc-members:
+   :show-inheritance:

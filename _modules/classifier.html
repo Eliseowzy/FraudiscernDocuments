@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>classifier &mdash; Fraudsicern 1.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fraudsicern
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../interface/modules.html">interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/modules.html">app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/modules.html">utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/modules.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classifier/modules.html">classifier</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fraudsicern</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>classifier</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for classifier</h1><div class="highlight"><pre>
+<span></span><span class="c1"># !/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">@author: Wang Zhiyi</span>
+<span class="sd">@file: classifier.py</span>
+<span class="sd">@time: 6/20/2021</span>
+<span class="sd">@version: 1.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="set_data_set"><a class="viewcode-back" href="../classifier/classifier.html#classifier.set_data_set">[docs]</a><span class="k">def</span> <span class="nf">set_data_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_set_path</span><span class="p">,</span> <span class="n">test_proportion</span><span class="o">=</span><span class="mf">0.05</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set the data set of the classifier.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data_set_path: the location of the data set</span>
+<span class="sd">        test_proportion: The proportion of test set</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_data_set</span> <span class="o">=</span> <span class="n">data_loader</span><span class="o">.</span><span class="n">load_data_from_csv</span><span class="p">(</span><span class="n">data_set_path</span><span class="p">)</span>
+    <span class="c1"># 过采样</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_data_set</span> <span class="o">=</span> <span class="n">data_sampler</span><span class="o">.</span><span class="n">smote</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data_set</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;is_fraud&#39;</span><span class="p">)</span>
+    <span class="c1"># 划分训练集、测试集</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_train_set</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_set</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_train_test_set</span><span class="p">(</span>
+        <span class="n">test_proportion</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<span class="k">def</span> <span class="nf">_get_train_test_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_proportion</span><span class="o">=</span><span class="mf">0.05</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Split the whole data set into train set and test set.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        test_proportion (float, optional): The proportion of test set. Defaults to 0.05.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        train_set, test_set: Two pyspark.sql.DataFrame</span>
+<span class="sd">   &quot;&quot;&quot;</span>    
+    <span class="n">train_proportion</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">test_proportion</span>
+    <span class="n">train_set</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_set</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span>
+        <span class="n">frac</span><span class="o">=</span><span class="n">train_proportion</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">786</span><span class="p">)</span>
+    <span class="n">test_set</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_set</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">train_set</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">train_set</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">test_set</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Data for Training: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">train_set</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Data for Testing &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">test_set</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">train_set</span><span class="p">,</span> <span class="n">test_set</span>
+
+
+<div class="viewcode-block" id="set_model"><a class="viewcode-back" href="../classifier/classifier.html#classifier.set_model">[docs]</a><span class="k">def</span> <span class="nf">set_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;random_forest&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set the model will be trained.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model_name(string): The name of the model.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        classifier model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">==</span> <span class="s2">&quot;random_forest&quot;</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">=</span> <span class="n">model_name</span>
+        <span class="c1"># 构造随机森林模型</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">random_forest_classifier</span><span class="o">.</span><span class="n">RandomForestClassifierModel</span><span class="p">()</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span></div>
+
+
+<div class="viewcode-block" id="train_model"><a class="viewcode-back" href="../classifier/classifier.html#classifier.train_model">[docs]</a><span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Train the classifier using train set.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        NoneType: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">==</span> <span class="s2">&quot;random_forest&quot;</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_train_set</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="test_model"><a class="viewcode-back" href="../classifier/classifier.html#classifier.test_model">[docs]</a><span class="k">def</span> <span class="nf">test_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test the classifier using test set.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        NoneType: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">==</span> <span class="s2">&quot;random_forest&quot;</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_test_set</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Wang Zhiyi, Zhang Siyu, Su Junjie.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

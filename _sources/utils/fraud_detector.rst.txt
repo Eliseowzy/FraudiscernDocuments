@@ -1,0 +1,7 @@
+fraud\_detector module
+======================
+
+.. automodule:: fraud_detector
+   :members:
+   :undoc-members:
+   :show-inheritance:

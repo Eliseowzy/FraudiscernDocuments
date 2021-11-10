@@ -1,0 +1,7 @@
+cmd\_helper module
+==================
+
+.. automodule:: cmd_helper
+   :members:
+   :undoc-members:
+   :show-inheritance:

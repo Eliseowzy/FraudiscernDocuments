@@ -1,0 +1,7 @@
+data\_sampler module
+====================
+
+.. automodule:: data_sampler
+   :members:
+   :undoc-members:
+   :show-inheritance:
